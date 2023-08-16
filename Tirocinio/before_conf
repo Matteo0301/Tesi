@@ -1,0 +1,137 @@
+
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:34 CEST
+Nmap scan report for 192.168.66.100
+Host is up (0.000041s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE     VERSION
+139/tcp  open  netbios-ssn Samba smbd 4.6.2
+445/tcp  open  netbios-ssn Samba smbd 4.6.2
+6566/tcp open  tcpwrapped
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.94%E=4%D=8/14%OT=139%CT=1%CU=37250%PV=Y%DS=0%DC=L%G=Y%TM=64DA3B
+OS:B0%P=x86_64-pc-linux-gnu)SEQ(SP=104%GCD=1%ISR=10E%TI=Z%CI=Z%TS=U)SEQ(SP=
+OS:104%GCD=1%ISR=10E%TI=Z%CI=Z%II=I%TS=U)OPS(O1=MFFD7NNSNW9%O2=MFFD7NNSNW9%
+OS:O3=MFFD7NW9%O4=MFFD7NNSNW9%O5=MFFD7NNSNW9%O6=MFFD7NNS)WIN(W1=AAAA%W2=AAA
+OS:A%W3=AAAA%W4=AAAA%W5=AAAA%W6=AAAA)ECN(R=Y%DF=Y%T=40%W=AAAA%O=MFFD7NNSNW9
+OS:%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=
+OS:Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%
+OS:RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0
+OS:%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIP
+OS:CK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 0 hops
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 35.67 seconds
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:35 CEST
+Nmap scan report for 192.168.66.100
+Host is up (0.0000040s latency).
+Not shown: 65530 closed tcp ports (reset)
+PORT     STATE SERVICE
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+1716/tcp open  xmsg
+6566/tcp open  sane-port
+8828/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 13.76 seconds
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:35 CEST
+Warning: 192.168.66.100 giving up on port because retransmission cap hit (0).
+Nmap scan report for 192.168.66.100
+Host is up (0.0000050s latency).
+Not shown: 65529 closed udp ports (port-unreach)
+PORT      STATE         SERVICE
+137/udp   open          netbios-ns
+138/udp   open|filtered netbios-dgm
+1716/udp  open|filtered xmsg
+5353/udp  open          zeroconf
+41058/udp open|filtered unknown
+51225/udp open|filtered unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 13.98 seconds
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:35 CEST
+Nmap scan report for 192.168.66.100
+Host is up (0.000044s latency).
+
+PORT    STATE SERVICE
+139/tcp open  netbios-ssn
+
+Host script results:
+|_nbstat: NetBIOS name: , NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2023-08-14T14:36:09
+|_  start_date: N/A
+
+Nmap done: 1 IP address (1 host up) scanned in 27.32 seconds
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:36 CEST
+Nmap scan report for 192.168.66.100
+Host is up (0.000043s latency).
+
+PORT     STATE SERVICE
+1716/tcp open  xmsg
+
+Nmap done: 1 IP address (1 host up) scanned in 15.25 seconds
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:36 CEST
+Nmap scan report for 192.168.66.100
+Host is up (0.000037s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+
+Host script results:
+| smb2-time: 
+|   date: 2023-08-14T14:36:51
+|_  start_date: N/A
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled but not required
+|_clock-skew: -1s
+|_nbstat: NetBIOS name: , NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 27.37 seconds
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:37 CEST
+Nmap scan report for 192.168.66.100
+Host is up (0.000043s latency).
+
+PORT     STATE SERVICE
+6566/tcp open  sane-port
+
+Nmap done: 1 IP address (1 host up) scanned in 13.46 seconds
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:37 CEST
+Nmap scan report for 192.168.66.100
+Host is up (0.000040s latency).
+
+PORT     STATE SERVICE
+6566/tcp open  sane-port
+
+Nmap done: 1 IP address (1 host up) scanned in 13.49 seconds
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-14 16:37 CEST
+Nmap scan report for 192.168.66.100
+Host is up (0.000049s latency).
+
+PORT     STATE SERVICE
+8828/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 13.35 seconds

@@ -25,6 +25,21 @@
 \usepackage{titlesec} % custom setup title of chanpter
 % \usepackage{newtxtext,newtxmath} % times new roman
 
+\usepackage{listings}
+
+\lstset{frame=tb,
+  language=Bash,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
 %%%%%%%%%%%%%%
 % support for accented letters
 %
@@ -122,14 +137,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
       
+      \part{Tools}
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       % chapters
       %
       % \input or \include
       %
-      \input{chapter1}
-      \input{chapter2}
-      \input{chapter3}
+      \input{intro}
+      
+      \input{network}
+      \input{memory}
       %\input{chapter4}
       
       

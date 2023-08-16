@@ -1,0 +1,32 @@
+\chapter{Wi-Fi access}
+In the thesis on which \cite{previouswork} this work is based it was suggested
+to use the Fern wifi cracker \cite{fern} to gain access to the target newtwork.
+Tis tool is basically a GUI for the aircrack-ng suite \cite{aircrack} and
+exposes all the features of the command line tool. It can in fact perform
+a lot of other attacks, aside from the WPA/WPA2 cracking, such as:
+\begin{itemize}
+    \item Automatic attacks on the access point
+    \item MITM attacks
+    \item Bruteforce attacks using protocols such as FTP, HTTP/HTTPS and TELNET
+    \item Deauthentication, access point spoofing and replay attacks
+\end{itemize}
+
+Nevertheless, as the goal of this work is to automate the process, the command
+line tool may prove to be more useful, as it can be easily integrated in a
+script.\\
+
+Other tools that can be employed instead of aircrack-ng are:
+\begin{itemize}
+    \item Reaver \cite{reaver}: a tool that exploits a flaw in the WPS
+        implementation of some routers using the WPS Pixie-Dust and other brute-force attacks
+    \item Wifite \cite{wifite}: a python script that is a frontend for a lot of 
+        tools, including aircrack-ng, reaver, cowpatty, pyrit, tshark, etc. It
+        is therefore perfect to automate the process of vulnerability assessment
+        of a wifi network
+    \item Bully \cite{bully}: similar to Reaver
+\end{itemize}
+
+The suggested tool is Wifite, as it is the most complete and it is a frontend
+to all other tools presented here.\\
+
+\newpage
