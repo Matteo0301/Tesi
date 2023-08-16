@@ -10,11 +10,15 @@ a lot of other attacks, aside from the WPA/WPA2 cracking, such as:
     \item Bruteforce attacks using protocols such as FTP, HTTP/HTTPS and TELNET
     \item Deauthentication, access point spoofing and replay attacks
 \end{itemize}
-
 Nevertheless, as the goal of this work is to automate the process, the command
 line tool may prove to be more useful, as it can be easily integrated in a
 script.\\
-
+The Aircrack-ng suite is the most portable of the tools presented here, as it
+can be used from virtually every operating system broadly used today, such as 
+Windows, MacOS, a lot of Linux distributions and even from BSD operating systems.\\
+There is also a Docker container for running it without installing it on the
+main system. It can be installed using the right packaged version for the host OS
+or by compiling it from source \cite{aircrack-git}.\\\\
 Other tools that can be employed instead of aircrack-ng are:
 \begin{itemize}
     \item Reaver \cite{reaver}: a tool that exploits a flaw in the WPS
@@ -25,8 +29,17 @@ Other tools that can be employed instead of aircrack-ng are:
         of a wifi network
     \item Bully \cite{bully}: similar to Reaver
 \end{itemize}
-
 The suggested tool is Wifite, as it is the most complete and it is a frontend
-to all other tools presented here.\\
-
+to all other tools presented here. It is also a command line program, so it
+can be easily used in a script and it is also very easy to use because of the
+almost complete automation of the process. Unfortunately it needs many dependencies
+to reach its full potential, but many of them are optional.
+It can be downloaded using git in the following way:
+\begin{lstlisting}[numbers=none]
+    git clone https://github.com/derv82/wifite2.git
+\end{lstlisting}
+It can then be run opening the terminal in the cloned directory and running:
+\begin{lstlisting}[numbers=none]
+    sudo ./Wifite.py
+\end{lstlisting}
 \newpage
