@@ -1,7 +1,7 @@
 \chapter{Wi-Fi access}
-In the thesis on which \cite{previouswork} this work is based it was suggested
-to use the Fern wifi cracker \cite{fern} to gain access to the target newtwork.
-Tis tool is basically a GUI for the aircrack-ng suite \cite{aircrack} and
+In the thesis on which\cite{previouswork} this work is based it was suggested
+to use the Fern wifi cracker\cite{fern} to gain access to the target newtwork.
+Tis tool is basically a GUI for the aircrack-ng suite\cite{aircrack} and
 exposes all the features of the command line tool. It can in fact perform
 a lot of other attacks, aside from the WPA/WPA2 cracking, such as:
 \begin{itemize}
@@ -18,16 +18,16 @@ can be used from virtually every operating system broadly used today, such as
 Windows, MacOS, a lot of Linux distributions and even from BSD operating systems.\\
 There is also a Docker container for running it without installing it on the
 main system. It can be installed using the right packaged version for the host OS
-or by compiling it from source \cite{aircrack-git}.\\\\
+or by compiling it from source\cite{aircrack-git}.\\\\
 Other tools that can be employed instead of aircrack-ng are:
 \begin{itemize}
-    \item Reaver \cite{reaver}: a tool that exploits a flaw in the WPS
+    \item Reaver\cite{reaver}: a tool that exploits a flaw in the WPS
         implementation of some routers using the WPS Pixie-Dust and other brute-force attacks
-    \item Wifite \cite{wifite}: a python script that is a frontend for a lot of 
+    \item Wifite\cite{wifite}: a python script that is a frontend for a lot of 
         tools, including aircrack-ng, reaver, cowpatty, pyrit, tshark, etc. It
         is therefore perfect to automate the process of vulnerability assessment
         of a wifi network
-    \item Bully \cite{bully}: similar to Reaver
+    \item Bully\cite{bully}: similar to Reaver
 \end{itemize}
 The suggested tool is Wifite, as it is the most complete and it is a frontend
 to all other tools presented here. It is also a command line program, so it

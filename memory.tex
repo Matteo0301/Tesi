@@ -1,1 +1,86 @@
 \chapter{Memory analysis}
+\section{Dump creation}
+In this chapter well focus on memory analysis: a type of vulnerability assessment not part of the framework on which
+this thesis is based. The goal will be to retrieve the memory dump of a running device
+and analyze it to find out if it vulnerable.\\\\
+We will assume the target device runs a Linux based operating system, because
+in case of IoT devices this is the most common scenario. If the device has a
+proprietary OS the analysis will be more difficult, but the same steps will apply
+(dump creation, retrieve and analysis).\\
+We also assume the attacker already has a working root shell on the device,
+as all operations of memory read and kernel module loading are only allowed in
+case of privileged access.\\\\
+In order to do this we first have to extract the memory dump from the device
+and put it in a file. This can be done using the dd command, present on all
+Linux installations.\\ It can be used for example to copy the content of \textbf{/dev/mem}
+calling it with the following syntax:
+\begin{lstlisting}[numbers=none]
+    dd if=/dev/mem of=memdump bs=1M count=1
+\end{lstlisting}
+This command will copy the specified number of blocks (count) of the specified
+size (bs) to the specified output file.\\\\
+Unfortunately we need a suitable device from which to extract the memory and \textbf{/dev/mem}
+may have been configured to allow only a small amount of memory to be read:
+this depends on the OS configuration so it's impossible to know it in advance.\\
+This limit may be of 1Mb or 1Gb, depending on the architecture and configuration, but it's only
+available since version 2.6.26 of the Linux kernel\cite{dev-mem-man} and only
+if the kernel has been compiled with the \textbf{CONFIG\_STRICT\_DEVMEM} option.\\
+On the x86 architecture it almost completely disallows memory access, allowing
+only some memory addresses, such as memory mapped PCI devices, to be read.
+The fact that the restriction is only available since a specific version may be an advantage for an attacker
+because it means that older versions of the kernel (usually used on IoT devices) may not have it.\\\\
+A similar device to textbf{/dev/mem} is \textbf{/dev/kmem}, which works the same 
+way, but uses kernel virtual memory addresses instead of physical memory addresses.\\
+Moreover it's only available if the kernel has been compiled with the \textbf{CONFIG\_DEVKMEM} option, so 
+it's not always available and not a good choice for our purposes.\\\\
+Another device from which we can obtain a memory dump is \textbf{/dev/fmem}\cite{dev-fmem}, which
+can be created with the use of a kernel module. It allows to read the whole physical memory
+without restrictions, but needs the installation of the kernel module and is not guaranteed to 
+work with the specific kernel version or architecture. In fact it's not been updated
+for a while, but this may not be a problem, because IoT devices rarely ship with the latest
+kernel versions.\\
+The last option that we'll analyze is the use of the \textbf{LiME} (Linux Memory Extractor)\cite{lime}.
+It's the most advanced option, because it offers a lot of convenient
+features that can help to retrieve the memory dump, with the downside (as before)
+of needing the installation of a kernel module.\\
+It can be used with the following syntax:
+\begin{lstlisting}[numbers=none]
+    insmod ./lime.ko "path=<outfile | tcp:<port>> format=<raw|padded|lime> [digest=<digest>] [dio=<0|1>]"
+\end{lstlisting}
+The module is able to:
+\begin{itemize}
+    \item Dump memory to a file or listen on a tcp port and send the memory dump to a remote host
+    \item Use different formats for the memory dump
+    \item Use different digest algorithms to verify the integrity of the memory dump 
+\end{itemize}
+
+\subsubsection{QEMU memory dump}
+In case the attacker succeeded in emulating the device image with QUEMU (for example
+using \textbf{FYRMADYNE}\cite{firmadyne}, as suggested in \cite{previouswork}), then it is possible
+to obtain a memory dump of the emulated device.\\
+This can be done with the \textbf{pmemsave} or the \textbf{dump-guest-memory} quemu commands.\\
+
+\subsubsection{File retrieve}
+Once we have created the memory dump we need to retrieve it from the device.\\
+If LiMe was not used than it's possible to use the commands \textbf{netcat}\cite{netcat} or \textbf{scp}\cite{scp}
+to upload the file to the attacker's machine.\\
+As we assume the target device to be a Linux machine, scp will probably be installed
+by default, whereas netcat will need to be installed.
+
+\section{Analysis}
+To analyze the dump file it's possible to use the \textbf{Volatility}\cite{volatility} framework, which is a collection
+of python tools to analyze memory images and extract information from them.
+We suggest using the original version, but there is also another one, more up to date, called \textbf{Volatility3}\cite{volatility3},
+still in development.\\\\
+It can be used for example to see open files and running processes at the time of the dump, but
+has many capabilities, listed on the official documentation. Volatility supports
+different file formats (raw, LiME, etc.) and different operating systems (Windows, Linux, etc.),
+but for systems other than Windows you need to configure the right profile,
+or even to write your own (in case there is no suitable one).\\\\
+For Linux there are already some profiles available, but it's very likely that
+an attacker will need to create his own ones, because of the huge variety of 
+IoT devices. However the instructions can be found on the official documentation\cite{volatility-conf}.\\\\
+Once the profile is configured it's possible to use the framework to analyze the dump file, to
+retrieve all important information about the system. It's also possible to 
+automate the process using the tool inside scripts, because it's a fully automated
+framework.\\\\
