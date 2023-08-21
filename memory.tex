@@ -53,24 +53,22 @@ The module is able to:
     \item Use different formats for the memory dump
     \item Use different digest algorithms to verify the integrity of the memory dump 
 \end{itemize}
-
 \subsubsection{QEMU memory dump}
 In case the attacker succeeded in emulating the device image with QUEMU (for example
 using \textbf{FYRMADYNE}\cite{firmadyne}, as suggested in \cite{previouswork}), then it is possible
 to obtain a memory dump of the emulated device.\\
 This can be done with the \textbf{pmemsave} or the \textbf{dump-guest-memory} quemu commands.\\
-
 \subsubsection{File retrieve}
 Once we have created the memory dump we need to retrieve it from the device.\\
 If LiMe was not used than it's possible to use the commands \textbf{netcat}\cite{netcat} or \textbf{scp}\cite{scp}
 to upload the file to the attacker's machine.\\
 As we assume the target device to be a Linux machine, scp will probably be installed
 by default, whereas netcat will need to be installed.
-
 \section{Analysis}
 To analyze the dump file it's possible to use the \textbf{Volatility}\cite{volatility} framework, which is a collection
 of python tools to analyze memory images and extract information from them.
-We suggest using the original version, but there is also another one, more up to date, called \textbf{Volatility3}\cite{volatility3},
+We suggest using the original version, but there is also another one, more up
+to date and written in Python 3 instead of Python 2, called \textbf{Volatility3}\cite{volatility3},
 still in development.\\\\
 It can be used for example to see open files and running processes at the time of the dump, but
 has many capabilities, listed on the official documentation. Volatility supports
@@ -79,9 +77,20 @@ but for systems other than Windows you need to configure the right profile,
 or even to write your own (in case there is no suitable one).\\\\
 For Linux there are already some profiles available, but it's very likely that
 an attacker will need to create his own ones, because of the huge variety of 
-IoT devices. However the instructions can be found on the official documentation\cite{volatility-conf}.\\\\
+IoT devices. However the instructions can be found on the official documentation
+and on other good tutorials\cite{volatility-conf}\cite{volatility-tutorial}.\\\\
 Once the profile is configured it's possible to use the framework to analyze the dump file, to
 retrieve all important information about the system. It's also possible to 
 automate the process using the tool inside scripts, because it's a fully automated
 framework.\\\\
+To analyze the file we can use the following command:
+\begin{lstlisting}[numbers=none]
+    python2 vol.py -f <dump_file> <plugin_name> --profile=<profile_name>
+\end{lstlisting}
+The plugin name specifies which action to perform on the file, so we can
+search for different information changing this parameter. A list of all Linux plugins can be
+obtained with this command:
+\begin{lstlisting}[numbers=none]
+    python2 vol.py --info  | grep linux_
+\end{lstlisting}
 \newpage
