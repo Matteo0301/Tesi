@@ -1,0 +1,41 @@
+\chapter{Scripts}
+Here we will analyze the capabilities of the scripts developed for the project.\\\\
+First of all we will analyze the script for the scanning and testing of the hosts on 
+the network. It's a Bash script that uses \textbf{nmap} to discover hosts on the
+network, search for open ports and run test script on those that are found.\\
+If we run the script with the following syntax:
+\begin{lstlisting}[numbers=none]
+    scan -h
+\end{lstlisting}
+we will get all the options it can accept and the output will be the following:
+\begin{lstlisting}[numbers=none]
+    Usage: scan [OPTIONS]
+        -u              perform udp scan
+        -a              perform attack with default scripts
+        -t              perform tcp scan
+        -f              full scans
+        -d              discovery mode (only -i and -o relevant)
+        -v              scan for OS version
+        -o FILENAME     redirect output to FILENAME
+        -i IP           scan specified IP
+        -m MODE         tcp scan mode
+\end{lstlisting}
+The \textbf{-d} option can be used to search for hosts on the network, and
+only the \textbf{-i} and \textbf{-o} options will be relevant, all the others will
+be discarded.\\
+The \textbf{-i} option can be used to specify the IP address of the host to scan,
+or of the network in case we are using the discovery mode (in which case we have to
+specify the address using the CIDR notation). The \textbf{-o} option will cause 
+all the outputs of the commands to be written also to that file, and not only to standard
+output. In case we don't want to retain the output we can specify the \textbf{/dev/null} file.
+If no file is specified it will default to "\textbf{output}".\\
+We can pass the \textbf{-v} option to perform an OS scan on the specified
+host, retrieving OS type and version.\\
+The script can be passed the \textbf{-t} or \textbf{-u} options, also in combination,
+to perform a TCP or UDP scan respectively. The \textbf{-f} options will cause a full
+scan to be performed, instead of only searching for the 1000 most common ports.
+We can also specify the TCP scan mode to use with the \textbf{-m} option, in which
+case it's not necessary to pass \textbf{-t}, because it is subsumed.\\
+If the \textbf{-a} option is specified, the script will run the default nmap scripts
+on the ports that are found open.\\
+\newpage

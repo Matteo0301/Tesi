@@ -36,7 +36,7 @@ run_command(){
 print_usage(){
     printf "Usage: scan [OPTIONS]\n"
     printf "\t-u\t\tperform udp scan\n"
-    printf "\t-u\t\tperform attack with default scripts\n"
+    printf "\t-a\t\tperform attack with default scripts\n"
     printf "\t-t\t\tperform tcp scan\n"
     printf "\t-f\t\tfull scans\n"
     printf "\t-d\t\tdiscovery mode (only -i and -o relevant)\n"
