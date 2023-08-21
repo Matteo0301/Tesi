@@ -79,7 +79,7 @@ discovery(){
 
 attack(){
     print_header "Starting to attack discovered ports"
-    PORTS=$(cat $OUTPUT_FILE | grep open | cut -d " " -f 1,2,3,4 | grep tcp | sort | uniq | cut -d "/" -f 1)
+    PORTS=$(cat $OUTPUT_FILE | grep open | awk '{ print $1 " " $2 " " $3 }' | grep tcp | sort | uniq | uniq | cut -d "/" -f 1)
 
     for p in $PORTS
     do
@@ -116,6 +116,6 @@ echo "" > $OUTPUT_FILE
 [ $UDP = true ] && udp_scan
 
 print_header "Scanning results:\n"
-cat $OUTPUT_FILE | grep open | cut -d " " -f 1,2,3,4 | sort | uniq
+cat $OUTPUT_FILE | grep open | awk '{ print $1 " " $2 " " $3 }' | sort | uniq
 
 [ $ATTACK = true ] && attack

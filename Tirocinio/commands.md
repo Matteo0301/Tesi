@@ -15,7 +15,7 @@ ip route
 192.168.123.0/24 dev br-4b9456140280 proto kernel scope link src 192.168.123.1 linkdown
 
 ```
-sudo ./scan -futav -m S -o $FILENAME -i $IP
+sudo ./scan -futav -o $FILENAME -i $IP
 ```
 
 ## After setup
