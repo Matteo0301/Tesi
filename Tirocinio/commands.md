@@ -15,11 +15,18 @@ ip route
 192.168.123.0/24 dev br-4b9456140280 proto kernel scope link src 192.168.123.1 linkdown
 
 ```
-sudo ./scan -futav -o $FILENAME -i $IP
+sudo ./scan -futav -o $FILENAME -i 192.168.66.100
 ```
 
 ## After setup
 
 ```
-sudo nmap -sn 192.168.200.223/24
+sudo ./find_hosts -i 192.168.200.223/24
+...
+192.168.200.226
+192.168.200.237
+```
+
+```
+sudo ./scan -futav -o $FILENAME -i 192.168.200.237
 ```

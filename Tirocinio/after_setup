@@ -1,0 +1,448 @@
+
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 17:37 CEST
+NSE: Loaded 46 scripts for scanning.
+Initiating ARP Ping Scan at 17:37
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 17:37, 0.21s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:37
+Completed Parallel DNS resolution of 1 host. at 17:37, 0.02s elapsed
+Initiating SYN Stealth Scan at 17:37
+Scanning 192.168.200.237 [1000 ports]
+Discovered open port 443/tcp on 192.168.200.237
+Discovered open port 80/tcp on 192.168.200.237
+Discovered open port 843/tcp on 192.168.200.237
+Discovered open port 1300/tcp on 192.168.200.237
+Completed SYN Stealth Scan at 17:37, 0.53s elapsed (1000 total ports)
+Initiating Service scan at 17:37
+Scanning 4 services on 192.168.200.237
+Service scan Timing: About 50.00% done; ETC: 17:41 (0:02:10 remaining)
+Completed Service scan at 17:39, 161.39s elapsed (4 services on 1 host)
+Initiating OS detection (try #1) against 192.168.200.237
+NSE: Script scanning 192.168.200.237.
+Initiating NSE at 17:39
+Completed NSE at 17:39, 12.20s elapsed
+Initiating NSE at 17:39
+Completed NSE at 17:40, 1.24s elapsed
+Nmap scan report for 192.168.200.237
+Host is up (0.045s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT     STATE SERVICE         VERSION
+80/tcp   open  http
+443/tcp  open  ssl/https
+843/tcp  open  unknown
+1300/tcp open  h323hostcallsc?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.94%I=7%D=8/22%Time=64E4D626%P=x86_64-pc-linux-gnu%r(GetR
+SF:equest,17B,"HTTP/1\.0\x20302\x20Redirect\r\nDate:\x20Tue\x20Aug\x2022\x
+SF:2015:37:10\x202023\r\nContent-Length:\x20214\r\nConnection:\x20close\r\
+SF:nLocation:\x20http://localhost/index\.html\r\nX-Frame-Options:\x20SAMEO
+SF:RIGIN\r\n\r\n<html><head></head><body>\r\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20This\x20document\x20has\x20moved\x20to\x20a\x20new\x20<a\x20href=\"h
+SF:ttp://localhost/index\.html\">location</a>\.\r\n\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20Please\x20update\x20your\x20documents\x20to\x20reflect\x20the\
+SF:x20new\x20location\.\r\n\x20\x20\x20\x20\x20\x20\x20\x20</body></html>\
+SF:r\n\r\n")%r(HTTPOptions,110,"HTTP/1\.0\x20404\x20Not\x20Found\r\nDate:\
+SF:x20Tue\x20Aug\x2022\x2015:37:10\x202023\r\nContent-Length:\x20145\r\nCo
+SF:nnection:\x20close\r\nX-Frame-Options:\x20SAMEORIGIN\r\n\r\n<html>\r\n\
+SF:x20\x20\x20\x20<head><title>Document\x20Error:\x20Not\x20Found</title><
+SF:/head>\r\n\x20\x20\x20\x20<body>\r\n\x20\x20\x20\x20\x20\x20\x20\x20<h2
+SF:>Access\x20Error:\x20Not\x20Found</h2>\r\n\x20\x20\x20\x20</body>\r\n</
+SF:html>\r\n\r\n")%r(RTSPRequest,11F,"HTTP/1\.0\x20406\x20Not\x20Acceptabl
+SF:e\r\nDate:\x20Tue\x20Aug\x2022\x2015:37:11\x202023\r\nContent-Length:\x
+SF:20155\r\nConnection:\x20close\r\nX-Frame-Options:\x20SAMEORIGIN\r\n\r\n
+SF:<html>\r\n\x20\x20\x20\x20<head><title>Document\x20Error:\x20Not\x20Acc
+SF:eptable</title></head>\r\n\x20\x20\x20\x20<body>\r\n\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20<h2>Access\x20Error:\x20Not\x20Acceptable</h2>\r\n\x20\x20
+SF:\x20\x20</body>\r\n</html>\r\n\r\n")%r(FourOhFourRequest,110,"HTTP/1\.0
+SF:\x20404\x20Not\x20Found\r\nDate:\x20Tue\x20Aug\x2022\x2015:37:17\x20202
+SF:3\r\nContent-Length:\x20145\r\nConnection:\x20close\r\nX-Frame-Options:
+SF:\x20SAMEORIGIN\r\n\r\n<html>\r\n\x20\x20\x20\x20<head><title>Document\x
+SF:20Error:\x20Not\x20Found</title></head>\r\n\x20\x20\x20\x20<body>\r\n\x
+SF:20\x20\x20\x20\x20\x20\x20\x20<h2>Access\x20Error:\x20Not\x20Found</h2>
+SF:\r\n\x20\x20\x20\x20</body>\r\n</html>\r\n\r\n")%r(SIPOptions,116,"HTTP
+SF:/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Tue\x20Aug\x2022\x2015:38:23
+SF:\x202023\r\nContent-Length:\x20149\r\nConnection:\x20close\r\nX-Frame-O
+SF:ptions:\x20SAMEORIGIN\r\n\r\n<html>\r\n\x20\x20\x20\x20<head><title>Doc
+SF:ument\x20Error:\x20Bad\x20Request</title></head>\r\n\x20\x20\x20\x20<bo
+SF:dy>\r\n\x20\x20\x20\x20\x20\x20\x20\x20<h2>Access\x20Error:\x20Bad\x20R
+SF:equest</h2>\r\n\x20\x20\x20\x20</body>\r\n</html>\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port443-TCP:V=7.94%T=SSL%I=7%D=8/22%Time=64E4D62E%P=x86_64-pc-linux-gnu
+SF:%r(GetRequest,17D,"HTTP/1\.0\x20302\x20Redirect\r\nDate:\x20Tue\x20Aug\
+SF:x2022\x2015:37:17\x202023\r\nContent-Length:\x20215\r\nConnection:\x20c
+SF:lose\r\nLocation:\x20https://localhost/index\.html\r\nX-Frame-Options:\
+SF:x20SAMEORIGIN\r\n\r\n<html><head></head><body>\r\n\x20\x20\x20\x20\x20\
+SF:x20\x20\x20This\x20document\x20has\x20moved\x20to\x20a\x20new\x20<a\x20
+SF:href=\"https://localhost/index\.html\">location</a>\.\r\n\x20\x20\x20\x
+SF:20\x20\x20\x20\x20Please\x20update\x20your\x20documents\x20to\x20reflec
+SF:t\x20the\x20new\x20location\.\r\n\x20\x20\x20\x20\x20\x20\x20\x20</body
+SF:></html>\r\n\r\n")%r(HTTPOptions,110,"HTTP/1\.0\x20404\x20Not\x20Found\
+SF:r\nDate:\x20Tue\x20Aug\x2022\x2015:37:18\x202023\r\nContent-Length:\x20
+SF:145\r\nConnection:\x20close\r\nX-Frame-Options:\x20SAMEORIGIN\r\n\r\n<h
+SF:tml>\r\n\x20\x20\x20\x20<head><title>Document\x20Error:\x20Not\x20Found
+SF:</title></head>\r\n\x20\x20\x20\x20<body>\r\n\x20\x20\x20\x20\x20\x20\x
+SF:20\x20<h2>Access\x20Error:\x20Not\x20Found</h2>\r\n\x20\x20\x20\x20</bo
+SF:dy>\r\n</html>\r\n\r\n")%r(FourOhFourRequest,110,"HTTP/1\.0\x20404\x20N
+SF:ot\x20Found\r\nDate:\x20Tue\x20Aug\x2022\x2015:37:18\x202023\r\nContent
+SF:-Length:\x20145\r\nConnection:\x20close\r\nX-Frame-Options:\x20SAMEORIG
+SF:IN\r\n\r\n<html>\r\n\x20\x20\x20\x20<head><title>Document\x20Error:\x20
+SF:Not\x20Found</title></head>\r\n\x20\x20\x20\x20<body>\r\n\x20\x20\x20\x
+SF:20\x20\x20\x20\x20<h2>Access\x20Error:\x20Not\x20Found</h2>\r\n\x20\x20
+SF:\x20\x20</body>\r\n</html>\r\n\r\n")%r(RTSPRequest,11F,"HTTP/1\.0\x2040
+SF:6\x20Not\x20Acceptable\r\nDate:\x20Tue\x20Aug\x2022\x2015:37:28\x202023
+SF:\r\nContent-Length:\x20155\r\nConnection:\x20close\r\nX-Frame-Options:\
+SF:x20SAMEORIGIN\r\n\r\n<html>\r\n\x20\x20\x20\x20<head><title>Document\x2
+SF:0Error:\x20Not\x20Acceptable</title></head>\r\n\x20\x20\x20\x20<body>\r
+SF:\n\x20\x20\x20\x20\x20\x20\x20\x20<h2>Access\x20Error:\x20Not\x20Accept
+SF:able</h2>\r\n\x20\x20\x20\x20</body>\r\n</html>\r\n\r\n")%r(SIPOptions,
+SF:116,"HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Tue\x20Aug\x2022\x2
+SF:015:38:34\x202023\r\nContent-Length:\x20149\r\nConnection:\x20close\r\n
+SF:X-Frame-Options:\x20SAMEORIGIN\r\n\r\n<html>\r\n\x20\x20\x20\x20<head><
+SF:title>Document\x20Error:\x20Bad\x20Request</title></head>\r\n\x20\x20\x
+SF:20\x20<body>\r\n\x20\x20\x20\x20\x20\x20\x20\x20<h2>Access\x20Error:\x2
+SF:0Bad\x20Request</h2>\r\n\x20\x20\x20\x20</body>\r\n</html>\r\n\r\n");
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+Device type: general purpose
+Running: Linux 2.6.X|3.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6 cpe:/o:linux:linux_kernel:3
+OS details: Linux 2.6.32 - 3.5
+Uptime guess: 0.004 days (since Tue Aug 22 17:34:17 2023)
+Network Distance: 1 hop
+TCP Sequence Prediction: Difficulty=262 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 177.29 seconds
+           Raw packets sent: 1020 (45.626KB) | Rcvd: 1017 (41.394KB)
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 17:40 CEST
+Initiating ARP Ping Scan at 17:40
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 17:40, 0.14s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:40
+Completed Parallel DNS resolution of 1 host. at 17:40, 0.02s elapsed
+Initiating SYN Stealth Scan at 17:40
+Scanning 192.168.200.237 [1000 ports]
+Discovered open port 443/tcp on 192.168.200.237
+Discovered open port 80/tcp on 192.168.200.237
+Discovered open port 1300/tcp on 192.168.200.237
+Discovered open port 843/tcp on 192.168.200.237
+Completed SYN Stealth Scan at 17:40, 0.48s elapsed (1000 total ports)
+Nmap scan report for 192.168.200.237
+Host is up (0.046s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT     STATE SERVICE
+80/tcp   open  http
+443/tcp  open  https
+843/tcp  open  unknown
+1300/tcp open  h323hostcallsc
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 0.84 seconds
+           Raw packets sent: 1001 (44.028KB) | Rcvd: 1001 (40.044KB)
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 17:40 CEST
+Initiating ARP Ping Scan at 17:40
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 17:40, 0.12s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:40
+Completed Parallel DNS resolution of 1 host. at 17:40, 0.03s elapsed
+Initiating UDP Scan at 17:40
+Scanning 192.168.200.237 [1000 ports]
+Increasing send delay for 192.168.200.237 from 0 to 50 due to max_successful_tryno increase to 4
+Increasing send delay for 192.168.200.237 from 50 to 100 due to max_successful_tryno increase to 5
+Increasing send delay for 192.168.200.237 from 100 to 200 due to max_successful_tryno increase to 6
+Increasing send delay for 192.168.200.237 from 200 to 400 due to 11 out of 12 dropped probes since last increase.
+Increasing send delay for 192.168.200.237 from 400 to 800 due to 11 out of 11 dropped probes since last increase.
+UDP Scan Timing: About 4.75% done; ETC: 17:50 (0:10:22 remaining)
+UDP Scan Timing: About 7.54% done; ETC: 17:53 (0:12:28 remaining)
+UDP Scan Timing: About 10.65% done; ETC: 17:54 (0:13:09 remaining)
+UDP Scan Timing: About 23.77% done; ETC: 17:56 (0:12:24 remaining)
+UDP Scan Timing: About 30.29% done; ETC: 17:56 (0:11:33 remaining)
+UDP Scan Timing: About 35.98% done; ETC: 17:56 (0:10:42 remaining)
+UDP Scan Timing: About 41.66% done; ETC: 17:56 (0:09:50 remaining)
+UDP Scan Timing: About 47.04% done; ETC: 17:56 (0:08:58 remaining)
+UDP Scan Timing: About 52.21% done; ETC: 17:57 (0:08:07 remaining)
+UDP Scan Timing: About 57.59% done; ETC: 17:57 (0:07:14 remaining)
+UDP Scan Timing: About 62.96% done; ETC: 17:57 (0:06:20 remaining)
+UDP Scan Timing: About 68.34% done; ETC: 17:57 (0:05:26 remaining)
+UDP Scan Timing: About 73.41% done; ETC: 17:57 (0:04:34 remaining)
+UDP Scan Timing: About 78.57% done; ETC: 17:57 (0:03:41 remaining)
+UDP Scan Timing: About 83.91% done; ETC: 17:57 (0:02:47 remaining)
+UDP Scan Timing: About 89.04% done; ETC: 17:57 (0:01:54 remaining)
+UDP Scan Timing: About 94.39% done; ETC: 17:57 (0:00:58 remaining)
+Completed UDP Scan at 17:58, 1082.65s elapsed (1000 total ports)
+Nmap scan report for 192.168.200.237
+Host is up (0.068s latency).
+Not shown: 996 closed udp ports (port-unreach)
+PORT      STATE         SERVICE
+3702/udp  open|filtered ws-discovery
+8000/udp  open|filtered irdmi
+19096/udp open|filtered unknown
+49167/udp open|filtered unknown
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 1083.01 seconds
+           Raw packets sent: 1516 (69.003KB) | Rcvd: 1086 (78.669KB)
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 17:58 CEST
+NSE: Loaded 126 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Initiating ARP Ping Scan at 17:58
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 17:58, 0.25s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:58
+Completed Parallel DNS resolution of 1 host. at 17:58, 0.02s elapsed
+Initiating SYN Stealth Scan at 17:58
+Scanning 192.168.200.237 [1 port]
+Discovered open port 1300/tcp on 192.168.200.237
+Completed SYN Stealth Scan at 17:58, 0.11s elapsed (1 total ports)
+NSE: Script scanning 192.168.200.237.
+Initiating NSE at 17:58
+Completed NSE at 17:58, 15.96s elapsed
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Nmap scan report for 192.168.200.237
+Host is up (0.20s latency).
+
+PORT     STATE SERVICE
+1300/tcp open  h323hostcallsc
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+
+NSE: Script Post-scanning.
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 16.66 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 17:58 CEST
+NSE: Loaded 126 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Initiating ARP Ping Scan at 17:58
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 17:58, 0.23s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:58
+Completed Parallel DNS resolution of 1 host. at 17:58, 0.02s elapsed
+Initiating SYN Stealth Scan at 17:58
+Scanning 192.168.200.237 [1 port]
+Discovered open port 1300/tcp on 192.168.200.237
+Completed SYN Stealth Scan at 17:58, 0.11s elapsed (1 total ports)
+NSE: Script scanning 192.168.200.237.
+Initiating NSE at 17:58
+Completed NSE at 17:58, 15.77s elapsed
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Nmap scan report for 192.168.200.237
+Host is up (0.19s latency).
+
+PORT     STATE SERVICE
+1300/tcp open  h323hostcallsc
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+
+NSE: Script Post-scanning.
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 16.45 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 17:58 CEST
+NSE: Loaded 126 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Initiating NSE at 17:58
+Completed NSE at 17:58, 0.00s elapsed
+Initiating ARP Ping Scan at 17:58
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 17:58, 0.26s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:58
+Completed Parallel DNS resolution of 1 host. at 17:58, 0.04s elapsed
+Initiating SYN Stealth Scan at 17:58
+Scanning 192.168.200.237 [1 port]
+Discovered open port 443/tcp on 192.168.200.237
+Completed SYN Stealth Scan at 17:58, 0.06s elapsed (1 total ports)
+NSE: Script scanning 192.168.200.237.
+Initiating NSE at 17:58
+Completed NSE at 17:59, 32.04s elapsed
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Nmap scan report for 192.168.200.237
+Host is up (0.21s latency).
+
+PORT    STATE SERVICE
+443/tcp open  https
+|_http-favicon: Unknown favicon MD5: 761B3CBCC87F3F8BE5FCF40C779E98B9
+| ssl-cert: Subject: commonName=localhost/organizationName=Example.com/stateOrProvinceName=Washington/countryName=US
+| Issuer: commonName=localhost/organizationName=Example.com/stateOrProvinceName=Washington/countryName=US
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2015-10-29T00:57:15
+| Not valid after:  2025-10-26T00:57:15
+| MD5:   2b31:8848:da07:3366:8eba:ecf3:9c96:0be3
+|_SHA-1: 48f0:92d1:bc58:b700:b956:2fb3:5819:efee:c4e8:8eab
+| http-title: index
+|_Requested resource was https://192.168.200.237/index.html
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+
+NSE: Script Post-scanning.
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 32.72 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 17:59 CEST
+NSE: Loaded 126 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Initiating ARP Ping Scan at 17:59
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 17:59, 0.24s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:59
+Completed Parallel DNS resolution of 1 host. at 17:59, 0.01s elapsed
+Initiating SYN Stealth Scan at 17:59
+Scanning 192.168.200.237 [1 port]
+Discovered open port 443/tcp on 192.168.200.237
+Completed SYN Stealth Scan at 17:59, 0.14s elapsed (1 total ports)
+NSE: Script scanning 192.168.200.237.
+Initiating NSE at 17:59
+Completed NSE at 17:59, 32.30s elapsed
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Nmap scan report for 192.168.200.237
+Host is up (0.20s latency).
+
+PORT    STATE SERVICE
+443/tcp open  https
+| ssl-cert: Subject: commonName=localhost/organizationName=Example.com/stateOrProvinceName=Washington/countryName=US
+| Issuer: commonName=localhost/organizationName=Example.com/stateOrProvinceName=Washington/countryName=US
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2015-10-29T00:57:15
+| Not valid after:  2025-10-26T00:57:15
+| MD5:   2b31:8848:da07:3366:8eba:ecf3:9c96:0be3
+|_SHA-1: 48f0:92d1:bc58:b700:b956:2fb3:5819:efee:c4e8:8eab
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+
+NSE: Script Post-scanning.
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 33.02 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 17:59 CEST
+NSE: Loaded 126 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Initiating NSE at 17:59
+Completed NSE at 17:59, 0.00s elapsed
+Initiating ARP Ping Scan at 17:59
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 17:59, 0.15s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:59
+Completed Parallel DNS resolution of 1 host. at 17:59, 0.01s elapsed
+Initiating SYN Stealth Scan at 17:59
+Scanning 192.168.200.237 [1 port]
+Discovered open port 80/tcp on 192.168.200.237
+Completed SYN Stealth Scan at 17:59, 0.14s elapsed (1 total ports)
+NSE: Script scanning 192.168.200.237.
+Initiating NSE at 17:59
+Completed NSE at 18:00, 15.80s elapsed
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.00s elapsed
+Nmap scan report for 192.168.200.237
+Host is up (0.12s latency).
+
+PORT   STATE SERVICE
+80/tcp open  http
+|_http-favicon: Unknown favicon MD5: 761B3CBCC87F3F8BE5FCF40C779E98B9
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+| http-title: index
+|_Requested resource was http://192.168.200.237/index.html
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+
+NSE: Script Post-scanning.
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.00s elapsed
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 16.44 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)
+
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-08-22 18:00 CEST
+NSE: Loaded 126 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.00s elapsed
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.00s elapsed
+Initiating ARP Ping Scan at 18:00
+Scanning 192.168.200.237 [1 port]
+Completed ARP Ping Scan at 18:00, 1.42s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 18:00
+Completed Parallel DNS resolution of 1 host. at 18:00, 0.02s elapsed
+Initiating SYN Stealth Scan at 18:00
+Scanning 192.168.200.237 [1 port]
+Discovered open port 843/tcp on 192.168.200.237
+Completed SYN Stealth Scan at 18:00, 0.09s elapsed (1 total ports)
+NSE: Script scanning 192.168.200.237.
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.40s elapsed
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.00s elapsed
+Nmap scan report for 192.168.200.237
+Host is up (0.17s latency).
+
+PORT    STATE SERVICE
+843/tcp open  unknown
+MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+
+NSE: Script Post-scanning.
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.00s elapsed
+Initiating NSE at 18:00
+Completed NSE at 18:00, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 2.24 seconds
+           Raw packets sent: 3 (100B) | Rcvd: 2 (72B)

@@ -10,13 +10,13 @@ FULL=false
 UDP=false
 TCP=false
 OS=false
-MODE=""
+MODE="S"
 DISCOVERY=false
 ATTACK=false
 
 # Helper functions
 error(){
-    printf "${RED}$1"
+    printf "${RED}$1${NORMAL_COLOR}"
     exit 2
 }
 
@@ -35,6 +35,7 @@ run_command(){
 
 print_usage(){
     printf "Usage: scan [OPTIONS]\n"
+    printf "\t-h\t\tprint this help message\n"
     printf "\t-u\t\tperform udp scan\n"
     printf "\t-a\t\tperform attack with default scripts\n"
     printf "\t-t\t\tperform tcp scan\n"
@@ -52,10 +53,10 @@ tcp_scan(){
     if [ $FULL = true ]
     then
         # Full scan
-        run_command "Full TCP scan" "nmap -p- -s${MODE} ${IP}"
+        run_command "Full TCP scan" "nmap -v -p- -s${MODE} ${IP}"
     else
         # Default scan
-        run_command "Default TCP scan" "nmap -s${MODE} ${IP}"
+        run_command "Default TCP scan" "nmap -v -s${MODE} ${IP}"
     fi
 }
 
@@ -64,26 +65,26 @@ udp_scan(){
     if [ $FULL = true ]
     then
         # Perform UDP scan
-        run_command "Full UDP scan" "nmap -sU -p- $IP --max-rtt-timeout 20ms --max-retries 0"
+        run_command "Full UDP scan" "nmap -sU -v -p- $IP" # --max-rtt-timeout 20ms --max-retries 0"
     else
         # Perform UDP scan
-        run_command "Default UDP scan" "nmap -sU $IP --max-rtt-timeout 20ms --max-retries 0"
+        run_command "Default UDP scan" "nmap -sU -v $IP" # --max-rtt-timeout 20ms --max-retries 0"
     fi
 }
 
 # Discover hosts in the network
 discovery(){
-    run_command "Scanning network" "nmap -sn $IP"
+    run_command "Scanning network" "nmap -sn -v $IP"
     exit 0
 }
 
 attack(){
     print_header "Starting to attack discovered ports"
-    PORTS=$(cat $OUTPUT_FILE | grep open | awk '{ print $1 " " $2 " " $3 }' | grep tcp | sort | uniq | uniq | cut -d "/" -f 1)
-
+    PORTS=$(cat $OUTPUT_FILE | grep open | cut -d " " -f 1,2,3,4 | grep tcp | sort | uniq | cut -d "/" -f 1)
+    
     for p in $PORTS
     do
-        run_command "Testing port $p" "nmap -sC -p$p $IP"
+        run_command "Testing port $p" "nmap -v -sC -p$p $IP"
     done
 }
 
@@ -109,7 +110,7 @@ echo "" > $OUTPUT_FILE
 [ $DISCOVERY = true ] && discovery
 
 
-[ $OS = true ] && run_command "First scan and os version" "nmap -O -sV $IP"
+[ $OS = true ] && run_command "First scan and os version" "nmap -v -O -sV $IP"
 
 [ $TCP = true ] && tcp_scan
 
