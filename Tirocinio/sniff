@@ -7,7 +7,7 @@ IFACE="wlo1"
 MODE="arp"
 
 print_usage(){
-    printf "Usage: scan [OPTIONS]\n"
+    printf "Usage: sniff [OPTIONS]\n"
     printf "\t-h\t\tprint this help message\n"
     printf "\t-1 IP\t\tspecify first IP address\n"
     printf "\t-2 IP\t\tspecify second IP address\n"

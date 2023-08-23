@@ -1,9 +1,10 @@
 \chapter{Scripts}
-Here we will analyze the capabilities of the scripts developed for the project.\\\\
+Here we will analyze the capabilities of the scripts developed for the project.
+\section{Scan}
 First of all we will analyze the script for the scanning and testing of the hosts on 
 the network. It's a Bash script that uses \textbf{nmap} to discover hosts on the
 network, search for open ports and run test script on those that are found.\\
-If we run the script with the following syntax:
+If we run the script with the following option:
 \begin{lstlisting}[numbers=none]
     scan -h
 \end{lstlisting}
@@ -28,14 +29,63 @@ or of the network in case we are using the discovery mode (in which case we have
 specify the address using the CIDR notation). The \textbf{-o} option will cause 
 all the outputs of the commands to be written also to that file, and not only to standard
 output. In case we don't want to retain the output we can specify the \textbf{/dev/null} file.
-If no file is specified it will default to "\textbf{output}".\\
+If no file is specified it will default to "\textbf{output}".\\\\
 We can pass the \textbf{-v} option to perform an OS scan on the specified
 host, retrieving OS type and version.\\
-The script can be passed the \textbf{-t} or \textbf{-u} options, also in combination,
-to perform a TCP or UDP scan respectively. The \textbf{-f} options will cause a full
-scan to be performed, instead of only searching for the 1000 most common ports.
+The options \textbf{-t} or \textbf{-u}, which can be combined,
+will perform a TCP or UDP scan respectively. The \textbf{-f} options will cause a full
+scan to be performed, instead of only searching for the 1000 most common ports,
+and it will affect bot UDP and TCP scans.
 We can also specify the TCP scan mode to use with the \textbf{-m} option, in which
 case it's not necessary to pass \textbf{-t}, because it is subsumed.\\
 If the \textbf{-a} option is specified, the script will run the default nmap scripts
-on the ports that are found open.\\
+on the ports that are found open.\\\\
+The script will also print every command executed and it's output, and it will
+print what ports are found open before starting to, eventually, test them.
+\section{New hosts discovery}
+To obtain a help message from the script we can use the same syntax as before:
+\begin{lstlisting}[numbers=none]
+    find_hosts -h
+\end{lstlisting}
+and we will get the following output:
+\begin{lstlisting}[numbers=none]
+    Usage: find_hosts [OPTIONS]
+    -h              print this help message
+    -f FILE         get old IP addresses from FILE
+    -i IP           scan specified IP
+\end{lstlisting}
+We see that we can use the \textbf{-i} option (required) to specify which network to scan,
+passing an IP address in CIDR notation. The script will perform a first scan and
+print the hosts that are found. It will then wait for the user to press enter,
+after the new devices have been connected to the network, and it will perform
+another scan, printing the IP addresses of the new hosts.\\\\
+The process of waiting for the user to press enter can be avoided by passing
+the \textbf{-f} option, which will cause the script to read the initial IP addresses
+from a file (one address per line) and proceed directly to the second scan.
+\section{Sniffing}
+If we run the script with the following option:
+\begin{lstlisting}[numbers=none]
+    sniff -h
+\end{lstlisting}
+we will see the following output:
+\begin{lstlisting}[numbers=none]
+    Usage: sniff [OPTIONS]
+    -h              print this help message
+    -1 IP           specify first IP address
+    -2 IP           specify second IP address
+    -o FILE         write output to FILE
+    -i IFACE        which interface to listen on
+    -m MODE         what mode to use for mitm (default is arp)
+\end{lstlisting}
+We can use the \textbf{-1} and \textbf{-2} options to specify the IP addresses of the
+two hosts we want to sniff (both are mandatory). The \textbf{-o} option can be used
+to specify the file to which we want to write the output, and if it's not specified
+it will default to "\textbf{output}".\\
+The \textbf{-i} option can be used to specify the interface to listen on, and if it's
+not specified it will default to "\textbf{wlo1}".\\
+Finally, the \textbf{-m} option can be used to specify the mode to use for the mitm
+attack, defaulting to \textbf{arp} if not specified.\\
+This script, once started, will open the textual user interface of ettercap,
+and will wait for the user to press \textbf{q} to quit, saving all packets
+to the target output file.\\
 \newpage

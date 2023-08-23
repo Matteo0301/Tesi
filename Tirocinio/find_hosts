@@ -9,7 +9,7 @@ NEW_HOSTS=""
 FILE=""
 
 print_usage(){
-    printf "Usage: scan [OPTIONS]\n"
+    printf "Usage: find_hosts [OPTIONS]\n"
     printf "\t-h\t\tprint this help message\n"
     printf "\t-f FILE\t\tget old IP addresses from FILE\n"
     printf "\t-i IP\t\tscan specified IP\n"
