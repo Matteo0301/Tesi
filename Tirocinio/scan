@@ -53,10 +53,10 @@ tcp_scan(){
     if [ $FULL = true ]
     then
         # Full scan
-        run_command "Full TCP scan" "nmap -v -p- -s${MODE} ${IP}"
+        run_command "Full TCP scan" "nmap  -p- -s${MODE} ${IP}"
     else
         # Default scan
-        run_command "Default TCP scan" "nmap -v -s${MODE} ${IP}"
+        run_command "Default TCP scan" "nmap  -s${MODE} ${IP}"
     fi
 }
 
@@ -65,16 +65,16 @@ udp_scan(){
     if [ $FULL = true ]
     then
         # Perform UDP scan
-        run_command "Full UDP scan" "nmap -sU -v -p- $IP" # --max-rtt-timeout 20ms --max-retries 0"
+        run_command "Full UDP scan" "nmap -sU  -p- $IP --max-rtt-timeout 20ms --max-retries 0"
     else
         # Perform UDP scan
-        run_command "Default UDP scan" "nmap -sU -v $IP" # --max-rtt-timeout 20ms --max-retries 0"
+        run_command "Default UDP scan" "nmap -sU  $IP --max-rtt-timeout 20ms --max-retries 0"
     fi
 }
 
 # Discover hosts in the network
 discovery(){
-    run_command "Scanning network" "nmap -sn -v $IP"
+    run_command "Scanning network" "nmap -sn  $IP"
     exit 0
 }
 
@@ -84,7 +84,7 @@ attack(){
     
     for p in $PORTS
     do
-        run_command "Testing port $p" "nmap -v -sC -p$p $IP"
+        run_command "Testing port $p" "nmap  -sC -p$p $IP"
     done
 }
 
@@ -110,7 +110,7 @@ echo "" > $OUTPUT_FILE
 [ $DISCOVERY = true ] && discovery
 
 
-[ $OS = true ] && run_command "First scan and os version" "nmap -v -O -sV $IP"
+[ $OS = true ] && run_command "First scan and os version" "nmap  -O -sV $IP"
 
 [ $TCP = true ] && tcp_scan
 

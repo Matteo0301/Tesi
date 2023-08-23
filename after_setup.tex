@@ -1,1 +1,114 @@
 \chapter{After setup}
+
+\section{Setup}
+To setup the camera it is sufficient to connect the phone to the camera wifi
+and add the device to the app. The app will automatically connect to the camera
+and we will be able to configure the camera to connect to the local wifi.
+In case the camera has been connected using the ethernet cable, it is
+sufficient to add it to the app using the QR code on the back of the camera.\\\\
+After having configured the camera we can use the script created to list new hosts
+in a network to find the IP addresses of the camera and the phone.\\
+It can be run using this command:
+\begin{lstlisting}[numbers=none]
+    sudo ./find_hosts -i 192.168.200.223/24
+\end{lstlisting}
+where the IP address is the one of the local network (which
+can be found using the \textbf{ifconfig} command).\\
+An example of the output of the script is the following:
+\begin{lstlisting}[numbers=none]
+    ...
+    192.168.200.237
+\end{lstlisting}
+We can confirm this is the IP address of the camera by checking on
+the app. The address of the phone can be found in the same manner and in our case
+it was \textbf{192.168.200.226}.\\
+\section{Scanning}
+We can now repeat the scan of the camera to see which ports are open, now that the
+configuration has changed.\\
+We can run the script using the same command as before command:
+\begin{lstlisting}[numbers=none]
+    sudo ./scan -futav -o $FILENAME -i 192.168.200.237
+\end{lstlisting}
+Strangely enough, the script did not recognize the camera operating system
+and MAC address the first time it was run.\\
+But the second time correctly gave the following output:
+\begin{lstlisting}[numbers=none]
+    ... 
+    MAC Address: E0:51:D8:ED:73:85 (China Dragon Technology Limited)
+    Device type: general purpose
+    Running: Linux 2.6.X|3.X
+    OS CPE: cpe:/o:linux:linux_kernel:2.6 cpe:/o:linux:linux_kernel:3
+    OS details: Linux 2.6.32 - 3.5
+    Uptime guess: 0.004 days (since Tue Aug 22 17:34:17 2023)
+    Network Distance: 1 hop
+    ... 
+\end{lstlisting}
+We can see that it runs a Linux kernel between 2.6.32 and 3.5, so it's not 
+the latest version, and this may lead to some security issues.\\\\
+We found that the open ports are the following:
+\begin{lstlisting}[numbers=none]
+    1300/tcp open h323hostcallsc
+    19096/udp open|filtered unknown
+    3702/udp open|filtered ws-discovery
+    443/tcp open ssl/https
+    49167/udp open|filtered unknown
+    80/tcp open http
+    8000/udp open|filtered irdmi
+    843/tcp open unknown
+\end{lstlisting}
+The script also complained about two services being unrecognized, despite having
+returned data during the first scan.\\
+We can see that the ports associated to the SMB protocol are not open anymore,
+but we have some new ports, such as the 80 and 443 over TCP, which are used by \textbf{HTTP}
+and \textbf{HTTPS}, probably for the administration interface of the camera.\\\\
+Another interesting port is the number 1300, which is used by the \textbf{H.323} protocol,
+which is used to send and receive audio and video over the network \cite{h323}.\\
+Other open ports are the ones associated with
+\textbf{ws-discovery}, a protocol to search for web services on
+a network \cite{ws-discovery}, and \textbf{irdmi}, a protocol developed
+by Intel that provides a remote desktop management interface for
+the device.\\\\
+During the test phase of those ports, we got the following output:
+\begin{lstlisting}[numbers=none]
+    ... 
+
+    PORT    STATE SERVICE
+    443/tcp open  https
+    | ssl-cert: Subject: commonName=localhost/organizationName=Example.com/stateOrProvinceName=Washington/countryName=US
+    | Issuer: commonName=localhost/organizationName=Example.com/stateOrProvinceName=Washington/countryName=US
+    | Public Key type: rsa
+    | Public Key bits: 2048
+    | Signature Algorithm: sha256WithRSAEncryption
+    | Not valid before: 2015-10-29T00:57:15
+    | Not valid after:  2025-10-26T00:57:15
+    | MD5:   2b31:8848:da07:3366:8eba:ecf3:9c96:0be3
+    |_SHA-1: 48f0:92d1:bc58:b700:b956:2fb3:5819:efee:c4e8:8eab
+
+    ... 
+
+    PORT   STATE SERVICE
+    80/tcp open  http
+    |_http-favicon: Unknown favicon MD5: 761B3CBCC87F3F8BE5FCF40C779E98B9
+    | http-methods: 
+    |_  Supported Methods: GET HEAD POST
+    | http-title: index
+    |_Requested resource was http://192.168.200.237/index.html
+
+    ... 
+\end{lstlisting}
+The only useful information we can get from this output is what
+HTTP methods are allowed by the server, which are \textbf{GET}, \textbf{HEAD} and \textbf{POST}, 
+and some information about the SSL certificate used by the HTTPS server.\\
+\section{Packet sniffing}
+We can now try to sniff the traffic between the camera and the router and between
+the phone and the router.\\
+We can use the script created to sniff the traffic and save it to a file, and
+analyze later the pcap using Wireshark.\\
+We can run the script using the following command:
+\begin{lstlisting}[numbers=none]
+    sudo ./sniff -1 192.168.200.226 -2 192.168.200.1 -i wlo1
+\end{lstlisting}
+to start the sniffing process for the camera. Unfortunately, the analysis of the
+pcap file did not give any useful information, so we were not able to get the source
+for the firmware updates of the camera and we could not analyze it further. 
+\newpage
