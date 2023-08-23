@@ -43,6 +43,8 @@ on the ports that are found open.\\\\
 The script will also print every command executed and it's output, and it will
 print what ports are found open before starting to, eventually, test them.
 \section{New hosts discovery}
+This script uses the \textbf{nmap} tool as before, to discover the newly connected
+hosts on the network.\\
 To obtain a help message from the script we can use the same syntax as before:
 \begin{lstlisting}[numbers=none]
     find_hosts -h
@@ -63,6 +65,9 @@ The process of waiting for the user to press enter can be avoided by passing
 the \textbf{-f} option, which will cause the script to read the initial IP addresses
 from a file (one address per line) and proceed directly to the second scan.
 \section{Sniffing}
+This script relies on the \textbf{ettercap} tool to sniff the packets between the two specified
+hosts. It doesn't add much functionality, but it's useful to automate
+and standardize the process, also simplifying its usage.\\
 If we run the script with the following option:
 \begin{lstlisting}[numbers=none]
     sniff -h

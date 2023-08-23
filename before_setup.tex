@@ -54,7 +54,7 @@ Then we have port 445 (both UDP and TCP) which is associated with \textbf{SMB}:
 a protocol developed by Microsoft to share files between machines over network.\\
 The port for the \textbf{zeroconf} service is used to dynamically configure the
 hosts on the network \cite{zeroconf}, and \textbf{sane-port} is a protocol used
-to share scanner devices over network. The latter is also reported as a tcpwrapped port, which means
+to share scanner devices with other hosts. The latter is also reported as a tcpwrapped port, which means
 that the port is protected by TCP Wrappers, an ACL system used to filter incoming packages
 using rules (such as allow only some hosts) in a similar way to firewalls. \\\\
 Then we also have two ports that are unknown, because they are not standard, therefore we don't know what services
