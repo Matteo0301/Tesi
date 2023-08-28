@@ -9,7 +9,9 @@ proprietary OS the analysis will be more difficult, but the same steps will appl
 (dump creation, retrieval and analysis).\\
 We also assume the attacker already has a working root shell on the device,
 as all operations of memory read and kernel module loading are only allowed in
-case of privileged access.\\\\
+case of privileged access. This step is therefore the last one
+of the framework we present here, because all ste previous steps
+must have already been completed.\\\\
 In order to do this we first have to extract the memory dump from the device
 and put it in a file. This can be done using the dd command, present on all
 Linux installations.\\ It can be used for example to copy the content of \textbf{/dev/mem}
