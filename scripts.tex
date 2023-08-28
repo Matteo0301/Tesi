@@ -1,5 +1,8 @@
 \chapter{Scripts}
-Here we will analyze the capabilities of the scripts developed for the project.
+Here we will analyze the capabilities of the scripts developed for the project.\\
+All the scripts are collected in a GitHub repository\cite{scripts-github}, so everyone
+can find and use them and check their usage by reading the provided
+documentation.
 \section{Scan}
 First of all we will analyze the script for the scanning and testing of the hosts on 
 the network. It's a Bash script that uses \textbf{nmap} to discover hosts on the
@@ -65,7 +68,7 @@ The process of waiting for the user to press enter can be avoided by passing
 the \textbf{-f} option, which will cause the script to read the initial IP addresses
 from a file (one address per line) and proceed directly to the second scan.
 \section{Sniffing}
-This script relies on the \textbf{ettercap} tool to sniff the packets between the two specified
+This script relies on the \textbf{ettercap}\cite{ettercap-home}\cite{ettercap-kali}\cite{ettercap-man} tool to sniff the packets between the two specified
 hosts. It doesn't add much functionality, but it's useful to automate
 and standardize the process, also simplifying its usage.\\
 If we run the script with the following option:
